@@ -23,7 +23,7 @@ and open the template in the editor.
         <br><br>
         <input type="text" required placeholder="Placa aqui..." name="placa"/>
         <br><br>
-        <input type="text" required placeholder="Propritário aqui..." name="idPessoa"/>
+        <input type="text" required placeholder="Proprietário aqui..." name="idPessoa"/>
         <br><br>
         
         <input type="submit" value="Salvar" name="salvarPF">
@@ -35,7 +35,7 @@ and open the template in the editor.
         <table>
             <thead>
                 <tr>
-                    <th>Marca</th><th>Modelo</th><th>Placa</th><th>Funções</th>
+                    <th>Marca</th><th>Modelo</th><th>Placa</th><th>Cor</th><th>Funções</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +44,7 @@ and open the template in the editor.
                         <td><?php echo $cars->marca; ?></td>
                         <td><?php echo $cars->modelo; ?></td>
                         <td><?php echo $cars->placa; ?></td>
-                        <td>
+                        <td><input type="color" disabled value="<?php echo $cars->cor; ?>" /></td>                        <td>
                             <a href="<?php echo base_url() . 'carroControl/editar/' . $cars->idcarro; ?>" >Editar</a> | 
                             <a href="<?php echo base_url() . 'carroControl/excluir/' . $cars->idcarro; ?>" >Deletar</a>
                         </td>

@@ -43,13 +43,14 @@ class Carro_model extends CI_Model {
 
     
     /**
-     * Este método retorna a lista de pessoas.
+     * Este método retorna a lista de carros.
      */
     
     function listar(){
         $this->db->select('*');
         $this->db->from('carro');
-        $this->db->order_by('placa', 'ASC');
+        $this->db->order_by('marca', 'ASC');
+        $this->db->order_by('modelo', 'ASC');
         $query = $this->db->get();
         return $query->result();
     }
