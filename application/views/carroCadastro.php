@@ -23,9 +23,15 @@ and open the template in the editor.
         <br><br>
         <input type="text" required placeholder="Placa aqui..." name="placa"/>
         <br><br>
-        <input type="text" required placeholder="Proprietário aqui..." name="idPessoa"/>
+        <select name="idPessoa">
+            <option value="">Proprietário</option>
+            <?php foreach ($pessoas as $pes): ?>
+                <option value="<?php echo $pes->idPessoa; ?>">
+                    <?php echo $pes->nome; ?>
+                </option>
+            <?php endforeach; ?>
+        </select>
         <br><br>
-        
         <input type="submit" value="Salvar" name="salvarPF">
         <input type="reset" value="Limpar" name="limpar">
 
@@ -35,7 +41,7 @@ and open the template in the editor.
         <table>
             <thead>
                 <tr>
-                    <th>Marca</th><th>Modelo</th><th>Placa</th><th>Cor</th><th>Funções</th>
+                    <th>Marca</th><th>Modelo</th><th>Placa</th><th>Cor</th><th>Proprietário</th><th>Funções</th>
                 </tr>
             </thead>
             <tbody>
@@ -44,7 +50,18 @@ and open the template in the editor.
                         <td><?php echo $cars->marca; ?></td>
                         <td><?php echo $cars->modelo; ?></td>
                         <td><?php echo $cars->placa; ?></td>
-                        <td><input type="color" disabled value="<?php echo $cars->cor; ?>" /></td>                        <td>
+                        <td><input type="color" disabled value="<?php echo $cars->cor; ?>" /></td> 
+                        <td>
+                            <?php
+                            foreach ($pessoas as $pes):
+                                if ($pes->idPessoa == $cars->idPessoa) {
+                                    echo $pes->nome;
+                                    break; //sair desta estrutura quando achar o valor correspondente
+                                }
+                            endforeach;
+                            ?>
+                        </td>
+                        <td>
                             <a href="<?php echo base_url() . 'carroControl/editar/' . $cars->idcarro; ?>" >Editar</a> | 
                             <a href="<?php echo base_url() . 'carroControl/excluir/' . $cars->idcarro; ?>" >Deletar</a>
                         </td>
